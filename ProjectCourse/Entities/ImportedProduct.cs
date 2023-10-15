@@ -15,8 +15,17 @@ namespace ProjectCourse.Entities {
             :base(name, price) {
             CustomsFee = customsFee;
         }
+
+        public double TotalPrice() {
+            return Price + CustomsFee; 
+        }
         public override string PriceTag() {
-            return Name + "$ " + Price + "((Customs fee: )"+CustomsFee.ToString("F2", CultureInfo.InvariantCulture);
+            return Name
+                 + " $ "
+                 + TotalPrice().ToString("F2", CultureInfo.InvariantCulture)
+                 + " (Customs fee: $ "
+                 + CustomsFee.ToString("F2", CultureInfo.InvariantCulture)
+                 + ")";
         }
     }
 }
